@@ -1,0 +1,34 @@
+{
+  "name": "react-native-awesome-pin",
+  "version": "1.0.0",
+  "description": "Responsive, minimal, and customizable pin screen for React Native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukebrandonfarrell/react-native-awesome-pin.git"
+  },
+  "keywords": [
+    "pin",
+    "code",
+    "screen",
+    "lock",
+    "pin",
+    "number",
+    "react",
+    "native",
+    "android",
+    "ios",
+    "javascript",
+    "keyboard",
+    "pins"
+  ],
+  "author": "Luke Brandon Farrell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukebrandonfarrell/react-native-awesome-pin/issues"
+  },
+  "homepage": "https://github.com/lukebrandonfarrell/react-native-awesome-pin#readme"
+}
