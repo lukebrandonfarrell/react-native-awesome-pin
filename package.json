@@ -1,7 +1,7 @@
 {
   "name": "react-native-awesome-pin",
-  "version": "1.0.0",
-  "description": "Responsive, minimal, and customizable pin screen for React Native",
+  "version": "1.1.0",
+  "description": "A highly interactive and customizable PIN code screen for React Native.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,5 +30,12 @@
   "bugs": {
     "url": "https://github.com/lukebrandonfarrell/react-native-awesome-pin/issues"
   },
-  "homepage": "https://github.com/lukebrandonfarrell/react-native-awesome-pin#readme"
+  "homepage": "https://github.com/lukebrandonfarrell/react-native-awesome-pin#readme",
+  "dependencies" : {
+    "react-native-material-ripple": "^0.8.0"
+  },
+  "peerDependencies": {
+    "react": "16.2.0",
+    "react-native": "0.53.0"
+  }
 }

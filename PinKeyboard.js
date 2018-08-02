@@ -27,6 +27,7 @@ class PinKeyboard extends Component {
         // Styles
         const {
             containerStyle,
+            keyboardDefaultStyle,
             keyboardRowStyle,
         } = styles;
 
@@ -41,7 +42,7 @@ class PinKeyboard extends Component {
         return (
             <View style={containerStyle}>
                 { this.renderError() }
-                <View style={keyboardStyle}>
+                <View style={[keyboardDefaultStyle, keyboardStyle]}>
                     {
                         // Maps each array of numbers in the keyboardValues array
                         keyboard.map((row, r) => {
@@ -131,6 +132,7 @@ class PinKeyboard extends Component {
         if (!disabled) {
             return (
                 <Ripple
+                    rippleColor={'#000'}
                     key={column}
                     onPress={
                         () => Boolean(keyboardFuncSet[row][column]) ?
@@ -179,10 +181,10 @@ class PinKeyboard extends Component {
 }
 
 PinKeyboard.propTypes = {
+    onRef: PropTypes.any.isRequired,
     keyDown: PropTypes.func.isRequired,
     keyboard: PropTypes.array,
     keyboardFunc: PropTypes.array,
-    vibration: PropTypes.bool,
 
     // Style props
     keyboardStyle: PropTypes.object,
@@ -212,7 +214,6 @@ PinKeyboard.defaultProps = {
     // Style applied to the keyboard. Must contain a height or
     // the keyboard will not be displayed.
     keyboardStyle: {
-        height: 250,
         backgroundColor: '#FFF'
     },
 
@@ -268,6 +269,9 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'column',
         justifyContent: 'flex-end',
+    },
+    keyboardDefaultStyle: {
+        height: 250,
     },
     keyboardRowStyle: {
         flex: 1,

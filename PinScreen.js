@@ -31,7 +31,22 @@ class PinScreen extends Component {
 
             // Style Props
             containerStyle,
-            taglineStyle
+            logoStyle,
+            taglineStyle,
+
+            // Pin style props
+            pinContainerStyle,
+            pinStyle,
+            pinActiveStyle,
+
+            // Keyboard style props
+            keyboardStyle,
+            keyboardDisabledStyle,
+            keyStyle,
+            keyTextStyle,
+            keyImageStyle,
+            errorStyle,
+            errorTextStyle,
         } = this.props;
 
         // State
@@ -47,10 +62,8 @@ class PinScreen extends Component {
 
         return(
             <View style={[ containerDefaultStyle, containerStyle ]}>
-                <View
-                    style={headerContainerStyle}>
-                    <Image
-                        source={logo}  />
+                <View style={headerContainerStyle}>
+                    <Image style={ logoStyle } source={logo}  />
                     <Text style={ taglineStyle }>{ tagline }</Text>
                 </View>
 
@@ -59,12 +72,22 @@ class PinScreen extends Component {
                     numberOfPins={numberOfPins}
                     numberOfPinsActive={pin.length}
                     vibration={vibration}
-                    shakeCallback={this.shakeComplete.bind(this)}
+                    animationShakeCallback={this.shakeAnimationComplete.bind(this)}
+                    containerStyle={pinContainerStyle}
+                    pinStyle={pinStyle}
+                    pinActiveStyle={pinActiveStyle}
                 />
 
                 <PinKeyboard
                     onRef={ref => (this.keyboard = ref)}
                     keyDown={this.keyDown.bind(this)}
+                    keyboardStyle={keyboardStyle}
+                    keyboardDisabledStyle={keyboardDisabledStyle}
+                    keyStyle={keyStyle}
+                    keyTextStyle={keyTextStyle}
+                    keyImageStyle={keyImageStyle}
+                    errorStyle={errorStyle}
+                    errorTextStyle={errorTextStyle}
                 />
             </View>
         );
@@ -104,14 +127,14 @@ class PinScreen extends Component {
             Vibration.vibrate(50);
         }
 
-        // Use the keyDown callback to pass the pin up to the
-        // parent component.
-        this.props.keyDown(newPin);
-
         // Set the state as the new pin
         this.setState({
             pin: newPin,
         });
+
+        // Use the keyDown callback to pass the pin up to the
+        // parent component.
+        this.props.keyDown(newPin);
     }
 
     /*
@@ -129,12 +152,11 @@ class PinScreen extends Component {
     }
 
     /*
-     * Function used to throw an error on the pin screen.
+     * Callback when shake animation has completed on the pin
     */
-    shakeComplete(){
+    shakeAnimationComplete(){
         this.setState({
             pin: '',
-            shaking: false,
         });
 
         this.keyboard.enable();
@@ -142,6 +164,8 @@ class PinScreen extends Component {
 }
 
 PinScreen.propTypes = {
+    onRef: PropTypes.any.isRequired,
+    keyDown: PropTypes.func.isRequired,
     tagline: PropTypes.string,
     logo: PropTypes.any,
     numberOfPins: PropTypes.number,
@@ -149,7 +173,22 @@ PinScreen.propTypes = {
 
     // Style props
     containerStyle: PropTypes.object,
+    logoStyle: PropTypes.object,
     taglineStyle: PropTypes.object,
+
+    // Pin style props
+    pinContainerStyle: PropTypes.object,
+    pinStyle: PropTypes.object,
+    pinActiveStyle: PropTypes.object,
+
+    // Keyboard style props
+    keyboardStyle: PropTypes.object,
+    keyboardDisabledStyle: PropTypes.object,
+    keyStyle: PropTypes.object,
+    keyTextStyle: PropTypes.object,
+    keyImageStyle: PropTypes.object,
+    errorStyle: PropTypes.object,
+    errorTextStyle: PropTypes.object,
 };
 
 PinScreen.defaultProps = {

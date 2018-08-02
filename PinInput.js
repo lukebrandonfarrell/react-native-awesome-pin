@@ -21,15 +21,19 @@ class PinInput extends Component {
     render(){
         // Styles
         const {
-            containerStyle,
-            pinCircleStyle,
-            pinCircleActiveStyle
+            containerDefaultStyle,
+            pinDefaultStyle,
         } = styles;
 
         // Props
         const {
             numberOfPinsActive,
-            numberOfPins
+            numberOfPins,
+
+            // Style Props
+            containerStyle,
+            pinStyle,
+            pinActiveStyle
         } = this.props;
 
         // State
@@ -43,7 +47,9 @@ class PinInput extends Component {
 
         for (let p=0; p<numberOfPins; p++){
             pins.push(
-                <View key={p} style={[pinCircleStyle, (p < numberOfPinsActive) ? pinCircleActiveStyle : {}]} />
+                <View key={p} style={
+                    [ pinDefaultStyle, pinStyle, (p < numberOfPinsActive) ? pinActiveStyle : {} ]
+                } />
             );
         }
 
@@ -54,7 +60,7 @@ class PinInput extends Component {
         });
 
         return(
-            <Animated.View style={[ containerStyle, { left: shakeAnimation } ]}>
+            <Animated.View style={[ containerDefaultStyle, containerStyle, { left: shakeAnimation } ]}>
                 { pins }
             </Animated.View>
         );
@@ -71,15 +77,24 @@ class PinInput extends Component {
 
         // Animate the pins to shake
         Animated.spring(this.state.shake, { toValue: 1, }).start(() => {
-            this.props.shakeCallback();
+            if(this.props.animationShakeCallback) {
+                this.props.animationShakeCallback();
+            }
         });
     }
 }
 
 PinInput.propTypes = {
-    vibration: PropTypes.bool,
+    onRef: PropTypes.any.isRequired,
     numberOfPins: PropTypes.number,
     numberOfPinsActive: PropTypes.number,
+    vibration: PropTypes.bool,
+    animationShakeCallback: PropTypes.func,
+
+    // Style props
+    containerStyle: PropTypes.object,
+    pinStyle: PropTypes.object,
+    pinActiveStyle: PropTypes.object,
 };
 
 PinInput.defaultProps = {
@@ -91,15 +106,27 @@ PinInput.defaultProps = {
 
     // Is vibration enabled or disabled
     vibration: true,
+
+    // Style for pin container. You can use the flex
+    // property to expand the pins to take up more space
+    // on the screen. The default is 0.8.
+    containerStyle: {},
+
+    // Style for the pin
+    pinStyle: {},
+    // Style applied when a pin is active
+    pinActiveStyle: {
+        opacity: 1.0,
+    }
 };
 
 const styles = StyleSheet.create({
-    containerStyle: {
-        flex: 0.6,
+    containerDefaultStyle: {
+        flex: 0.8,
         flexDirection: 'row',
         alignItems: 'center',
     },
-    pinCircleStyle: {
+    pinDefaultStyle: {
         width: 18,
         height: 18,
         marginRight: 15,
@@ -108,9 +135,7 @@ const styles = StyleSheet.create({
         opacity: 0.45,
         backgroundColor: '#FFF',
     },
-    pinCircleActiveStyle: {
-        opacity: 1.0,
-    }
+
 });
 
 export default PinInput;
