@@ -10,10 +10,8 @@ A highly interactive and customizable PIN code screen for React Native.
 - Keyboard and PIN components can be used independently for more fine-grained customization.
 - Animations and micro-feedback included to create a great user experience.
 
-<br />
   <img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/ashleigh.gif" width="45%" />
-  <img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/atom.gif" width="45%" />
-<br />
+  <img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/atom.gif" width="45%" />
 
 ## Install
 
