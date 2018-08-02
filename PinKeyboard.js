@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet, Platform } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import PropTypes from 'prop-types';
 
-const backAsset = require('../../../img/back.png');
+const backAsset = require('./back.png');
 
 class PinKeyboard extends Component {
     constructor(props) {
