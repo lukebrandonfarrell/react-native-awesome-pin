@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/lukebrandonfarrell/react-native-awesome-pin#readme",
   "dependencies": {
-    "react-native-material-ripple": "^0.8.0"
+    "react-native-material-ripple": "git+https://github.com/lukebrandonfarrell/react-native-material-ripple.git"
   },
   "peerDependencies": {
     "react": "16.2.0",

@@ -134,7 +134,7 @@ class PinKeyboard extends Component {
                 <Ripple
                     rippleColor={'#000'}
                     key={column}
-                    onPress={
+                    onPressIn={
                         () => Boolean(keyboardFuncSet[row][column]) ?
                             keyboardFuncSet[row][column]() :
                             keyDown(entity)
