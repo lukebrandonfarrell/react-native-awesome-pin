@@ -1,8 +1,8 @@
 # react-native-awesome-pin
 
-[![npm](https://img.shields.io/npm/v/react-native-awesome-pin.svg?style=flat-square)](https://www.npmjs.com/package/react-native-text-with)
-[![npm licence](http://img.shields.io/npm/l/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-text-with)
-[![npm downloads](http://img.shields.io/npm/dt/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-text-with)
+[![npm](https://img.shields.io/npm/v/react-native-awesome-pin.svg?style=flat-square)](https://www.npmjs.com/package/react-native-awesome-pin)
+[![npm licence](http://img.shields.io/npm/l/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-awesome-pin)
+[![npm downloads](http://img.shields.io/npm/dt/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-awesome-pin)
 
 A highly interactive and customizable PIN code screen for React Native.
 
@@ -10,9 +10,8 @@ A highly interactive and customizable PIN code screen for React Native.
 - Keyboard and PIN components can be used independently for more fine-grained customization.
 - Animations and micro-feedback included to create a great user experience.
 
-<img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/ashleigh.gif" width="48%" />
-<img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/atom.gif" width="48%" />
-
+  <img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/ashleigh.gif" width="45%" />
+  <img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/atom.gif" width="45%" />
 
 ## Install
 
@@ -63,7 +62,7 @@ recievePin(pin){
 
 #### PinKeyboard
 
-<img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/keyboard.png" width="50%" /><br />
+<img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/keyboard.png" width="50%" /><br />
 
 The on-screen keyboard can be used separately if you do not want to use the plug 
 and play `<PinScreen />` component. 
@@ -91,7 +90,7 @@ keyboard displaying the given error message. The style of the popup can be custo
 
 #### PinInput
 
-<img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/pins.png" width="50%" /><br />
+<img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-awesome-pin/pins.png" width="50%" /><br />
 
 The PIN input circles can be used separately if you do not want to use the plug 
 and play `<PinScreen />` component. They come with a shake animation and configurable 
