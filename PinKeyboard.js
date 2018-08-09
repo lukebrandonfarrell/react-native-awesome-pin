@@ -134,7 +134,6 @@ class PinKeyboard extends Component {
                 <Ripple
                     rippleColor={'#000'}
                     key={column}
-                    onPressOut={console.log('saas')}
                     onPressIn={
                         () => Boolean(keyboardFuncSet[row][column]) ?
                             keyboardFuncSet[row][column]() :
