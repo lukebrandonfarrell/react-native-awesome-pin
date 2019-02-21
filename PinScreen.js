@@ -1,231 +1,306 @@
-import React, {Component} from 'react';
-import { View, Image, Text, StyleSheet, Vibration } from 'react-native';
-import PropTypes from 'prop-types';
+/**
+ * @author Luke Brandon Farrell
+ * @description Customisable full screen pin component
+ */
 
-import PinInput from './PinInput';
-import PinKeyboard from './PinKeyboard';
+import React, { Component } from "react";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  Vibration,
+  SafeAreaView
+} from "react-native";
+import PropTypes from "prop-types";
+
+import PinInput from "./PinInput";
+import PinKeyboard from "./PinKeyboard";
 
 class PinScreen extends Component {
-    constructor(props){
-        super(props)
+  /**
+   * [ Built-in React method. ]
+   *
+   * Setup the component. Executes when the component is created
+   *
+   * @param {object} props
+   *
+   */
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            pin: '',
-        }
+    this.state = {
+      pin: ""
+    };
+  }
+
+  /**
+   * [ Built-in React method. ]
+   *
+   * Executed when the component is mounted to the screen.
+   */
+  componentDidMount() {
+    this.props.onRef(this);
+  }
+
+  /**
+   * [ Built-in React method. ]
+   *
+   * Executed when the component is unmounted from the screen
+   */
+  componentWillUnmount() {
+    this.props.onRef(undefined);
+  }
+
+  /**
+   * [ Built-in React method. ]
+   *
+   * Allows us to render JSX to the screen
+   */
+  componentDidUpdate(prevProps) {
+    const { pin } = this.props;
+
+    if (pin !== prevProps.pin) {
+      // We want to filter the pin so it always is a string
+      const filteredPin = pin ? pin.toString() : "";
+
+      this.setState({
+        pin: filteredPin
+      });
+    }
+  }
+
+  /**
+   * [ Built-in React method. ]
+   *
+   * Allows us to render JSX to the screen
+   */
+  render() {
+    /** Props */
+    const {
+      logo,
+      tagline,
+      numberOfPins,
+      shakeVibration,
+      headerBackgroundColor,
+      footerBackgroundColor,
+      // Style Props
+      containerStyle,
+      logoStyle,
+      taglineStyle,
+      // Pin style props
+      pinContainerStyle,
+      pinStyle,
+      pinActiveStyle,
+      // Keyboard style props
+      keyboardStyle,
+      keyboardDisabledStyle,
+      keyStyle,
+      keyTextStyle,
+      keyImageStyle,
+      errorStyle,
+      errorTextStyle
+    } = this.props;
+    /** State */
+    const { pin } = this.state;
+    /** Style */
+    const {
+      containerDefaultStyle,
+      defaultTaglineStyle,
+      safeAreaViewHeaderDefaultStyle,
+      safeAreaViewFooterDefaultStyle
+    } = styles;
+
+    return (
+      <View style={[containerDefaultStyle, containerStyle]}>
+        <SafeAreaView
+          style={[
+            safeAreaViewHeaderDefaultStyle,
+            { backgroundColor: headerBackgroundColor }
+          ]}
+        >
+          <Image style={logoStyle} source={logo} />
+          <Text style={[defaultTaglineStyle, taglineStyle]}>{tagline}</Text>
+
+          <PinInput
+            onRef={ref => (this.pins = ref)}
+            numberOfPins={numberOfPins}
+            numberOfPinsActive={pin.length}
+            vibration={shakeVibration}
+            animationShakeCallback={this.shakeAnimationComplete.bind(this)}
+            containerStyle={pinContainerStyle}
+            pinStyle={pinStyle}
+            pinActiveStyle={pinActiveStyle}
+          />
+        </SafeAreaView>
+
+        <SafeAreaView
+          style={[
+            safeAreaViewFooterDefaultStyle,
+            { backgroundColor: footerBackgroundColor }
+          ]}
+        >
+          <PinKeyboard
+            onRef={ref => (this.keyboard = ref)}
+            keyDown={this.keyDown.bind(this)}
+            keyboardStyle={keyboardStyle}
+            keyboardDisabledStyle={keyboardDisabledStyle}
+            keyStyle={keyStyle}
+            keyTextStyle={keyTextStyle}
+            keyImageStyle={keyImageStyle}
+            errorStyle={errorStyle}
+            errorTextStyle={errorTextStyle}
+          />
+          {this.props.ItemFooter}
+        </SafeAreaView>
+      </View>
+    );
+  }
+
+  /**
+   * Callback triggered when a key is pressed on the keyboard
+   *
+   * @param key
+   */
+  keyDown(key) {
+    /** Props */
+    const { numberOfPins, keyDown } = this.props;
+    /** State */
+    const { pin } = this.state;
+
+    // An instance of the pin
+    let newPin = pin;
+
+    // Check if key is the back buttons. The 'back' value is
+    // defined in the array keyboardFunc passed to keyboard as
+    // a parameter.
+    if (key === "back") {
+      newPin = pin.substring(0, pin.length - 1);
+    } else {
+      // Concat the letter in the string
+      if (pin.length < numberOfPins) {
+        newPin = pin.concat(key);
+      }
     }
 
-    componentDidMount() {
-        this.props.onRef(this)
-    }
-    componentWillUnmount() {
-        this.props.onRef(undefined)
-    }
-
-    render(){
-        // Props
-        const {
-            logo,
-            tagline,
-            numberOfPins,
-            vibration,
-
-            // Style Props
-            containerStyle,
-            logoStyle,
-            taglineStyle,
-
-            // Pin style props
-            pinContainerStyle,
-            pinStyle,
-            pinActiveStyle,
-
-            // Keyboard style props
-            keyboardStyle,
-            keyboardDisabledStyle,
-            keyStyle,
-            keyTextStyle,
-            keyImageStyle,
-            errorStyle,
-            errorTextStyle,
-        } = this.props;
-
-        // State
-        const {
-            pin,
-        } = this.state;
-
-        // Style
-        const {
-            containerDefaultStyle,
-            headerContainerStyle,
-        } = styles;
-
-        return(
-            <View style={[ containerDefaultStyle, containerStyle ]}>
-                <View style={headerContainerStyle}>
-                    <Image style={ logoStyle } source={logo}  />
-                    <Text style={ taglineStyle }>{ tagline }</Text>
-                </View>
-
-                <PinInput
-                    onRef={ref => (this.pins = ref)}
-                    numberOfPins={numberOfPins}
-                    numberOfPinsActive={pin.length}
-                    vibration={vibration}
-                    animationShakeCallback={this.shakeAnimationComplete.bind(this)}
-                    containerStyle={pinContainerStyle}
-                    pinStyle={pinStyle}
-                    pinActiveStyle={pinActiveStyle}
-                />
-
-                <PinKeyboard
-                    onRef={ref => (this.keyboard = ref)}
-                    keyDown={this.keyDown.bind(this)}
-                    keyboardStyle={keyboardStyle}
-                    keyboardDisabledStyle={keyboardDisabledStyle}
-                    keyStyle={keyStyle}
-                    keyTextStyle={keyTextStyle}
-                    keyImageStyle={keyImageStyle}
-                    errorStyle={errorStyle}
-                    errorTextStyle={errorTextStyle}
-                />
-            </View>
-        );
+    // If vibration is enabled then we vibrate on each key press
+    // to provide tactile feedback to the user.
+    if (this.props.keyVibration) {
+      Vibration.vibrate(50);
     }
 
-    /*
-    * Callback triggered when a key is pressed on the keyboard
-    */
-    keyDown(key){
-        // Props
-        const {
-            numberOfPins,
-        } = this.props;
-
-        // State
-        const {
-            pin
-        } = this.state;
-
-        let newPin = pin;
-
-        // Check if key is the back buttons. The 'back' value is
-        // defined in the array keyboardFunc passed to keyboard as
-        // a parameter.
-        if(key == 'back'){
-            newPin = pin.substring(0, pin.length - 1);
-        } else {
-            // Concat the letter in the string
-            if(pin.length < numberOfPins) {
-                newPin = pin.concat(key);
-            }
-        }
-
-        // If vibration is enabled then we vibrate on each key press
-        // to provide tactile feedback to the user.
-        if(this.props.vibration){
-            Vibration.vibrate(50);
-        }
-
-        // Set the state as the new pin
-        this.setState({
-            pin: newPin,
-        });
-
-        // Use the keyDown callback to pass the pin up to the
-        // parent component.
-        this.props.keyDown(newPin);
+    // The pin has been changed, trigger the callback
+    // Don't allow the callback if the input exceeds the number of pins
+    if (newPin.length <= numberOfPins) {
+      if (keyDown) keyDown(newPin);
     }
+  }
 
-    /*
-    * Function used to throw an error on the pin screen.
-    */
-    throwError(error){
-        // Shake the pins
-        this.pins.shake();
+  /**
+   * Function used to throw an error on the pin screen.
+   *
+   * @param error
+   */
+  throwError(error) {
+    // Shake the pins
+    this.pins.shake();
 
-        // throw error on the keyboard
-        this.keyboard.throwError(error);
+    // throw error on the keyboard
+    this.keyboard.throwError(error);
 
-        // Disable the keyboard
-        this.keyboard.disable();
-    }
+    // Disable the keyboard
+    this.keyboard.disable();
+  }
 
-    /*
-     * Callback when shake animation has completed on the pin
-    */
-    shakeAnimationComplete(){
-        this.setState({
-            pin: '',
-        });
+  /**
+   * Function used to clear the error on the pin screen
+   */
+  clearError() {
+    this.keyboard.clearError();
+  }
 
-        this.keyboard.enable();
-    }
+  /**
+   * Callback when shake animation has completed on the pin
+   */
+  shakeAnimationComplete() {
+    if (this.props.onError) this.props.onError();
+
+    this.keyboard.enable();
+  }
 }
 
 PinScreen.propTypes = {
-    onRef: PropTypes.any.isRequired,
-    keyDown: PropTypes.func.isRequired,
-    tagline: PropTypes.string,
-    logo: PropTypes.any,
-    numberOfPins: PropTypes.number,
-    vibration: PropTypes.bool,
+  pin: PropTypes.string,
+  onRef: PropTypes.any.isRequired,
+  keyDown: PropTypes.func.isRequired,
+  onError: PropTypes.func,
+  tagline: PropTypes.string,
+  logo: PropTypes.any,
+  numberOfPins: PropTypes.number,
+  keyVibration: PropTypes.bool,
+  shakeVibration: PropTypes.bool,
+  headerBackgroundColor: PropTypes.string,
+  footerBackgroundColor: PropTypes.string,
+  ItemFooter: PropTypes.element,
 
-    // Style props
-    containerStyle: PropTypes.object,
-    logoStyle: PropTypes.object,
-    taglineStyle: PropTypes.object,
+  // Style props
+  containerStyle: PropTypes.object,
+  logoStyle: PropTypes.object,
+  taglineStyle: PropTypes.object,
 
-    // Pin style props
-    pinContainerStyle: PropTypes.object,
-    pinStyle: PropTypes.object,
-    pinActiveStyle: PropTypes.object,
+  // Pin style props
+  pinContainerStyle: PropTypes.object,
+  pinStyle: PropTypes.object,
+  pinActiveStyle: PropTypes.object,
 
-    // Keyboard style props
-    keyboardStyle: PropTypes.object,
-    keyboardDisabledStyle: PropTypes.object,
-    keyStyle: PropTypes.object,
-    keyTextStyle: PropTypes.object,
-    keyImageStyle: PropTypes.object,
-    errorStyle: PropTypes.object,
-    errorTextStyle: PropTypes.object,
+  // Keyboard style props
+  keyboardStyle: PropTypes.object,
+  keyboardDisabledStyle: PropTypes.object,
+  keyStyle: PropTypes.object,
+  keyTextStyle: PropTypes.object,
+  keyImageStyle: PropTypes.object,
+  errorStyle: PropTypes.object,
+  errorTextStyle: PropTypes.object
 };
 
 PinScreen.defaultProps = {
-    // Text above the pins acting as a indicator
-    tagline: 'Enter your PIN',
-
-    // Number of pins to create
-    numberOfPins: 5,
-
-    // Is vibration enabled or disabled
-    vibration: true,
-
-    // Style of the full screen container. Background can
-    // be set in this style.
-    containerStyle: {
-        backgroundColor: '#e2e2e2',
-    },
-
-    // Style for the tagline which sits above the pins
-    taglineStyle: {
-        color: '#FFF',
-        fontSize: 17,
-        fontWeight: 'bold',
-    }
+  // Text above the pins acting as a indicator
+  tagline: "Enter your PIN",
+  // Number of pins to create
+  numberOfPins: 5,
+  // Is vibration enabled or disabled
+  keyVibration: true,
+  shakeVibration: true,
+  headerBackgroundColor: "#e2e2e2",
+  footerBackgroundColor: "#fff"
 };
 
-const styles = StyleSheet.create({
-    containerDefaultStyle: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-    },
-    headerContainerStyle: {
-        flex: 2,
-        alignItems: 'center',
-        justifyContent: 'flex-end'
-    },
-});
-
 export default PinScreen;
+
+/** -------------------------------------------- */
+/**             Component Styling                */
+/** -------------------------------------------- */
+const styles = StyleSheet.create({
+  containerDefaultStyle: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    backgroundColor: "#e2e2e2"
+  },
+  safeAreaViewHeaderDefaultStyle: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "100%",
+    marginTop: 100
+  },
+  safeAreaViewFooterDefaultStyle: {
+    height: 250,
+    width: "100%"
+  },
+  defaultTaglineStyle: {
+    color: "#FFF",
+    fontSize: 17,
+    fontWeight: "bold"
+  }
+});

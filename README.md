@@ -50,10 +50,13 @@ recievePin(pin){
 
 You need to add a ref to your PinScreen, this allows you to throw an error from the
 parent component when a PIN is incorrect. Errors can be thrown using the `throwError(message)` 
-method.
+method. Keyboard errors can be cleared using `clearError()` 
 
 ```js
 recievePin(pin){
+   // Clear error on interaction
+   this.pinScreen.clearError();
+  
    if(pin != '56771'){
        this.pinScreen.throwError('Your PIN is incorrect');
    }
@@ -127,7 +130,11 @@ The `<PinScreen />` is a great plug and play solution for a PIN screen.
 | tagline         | string        | Yes       | 'Enter your PIN'     | Tagline which sits above the PINS.                                                      |
 | logo            | object        | Yes       |                      | Logo to place at top of screen.                                                         |
 | numberOfPins    | number        | Yes       | 5                    | Number of pins to render.                                                               |
-| vibration       | bool          | Yes       | true                 | Should vibration be enabled.                                                            |
+| keyVibration    | bool          | Yes       | true                 | Should vibration be enabled for key press.                                              |
+| shakeVibration  | bool          | Yes       | true                 | Should vibration be enabled for shake.                                                  |
+| headerBackgroundColor | string  | Yes       | #e2e2e2              | Header colour for the SafeAreaView.                                                     |
+| footerBackgroundColor | string  | Yes       | #fff                 | Footer colour for the SafeAreaView.                                                     |
+| ItemFooter      | element       | Yes       |                      | A footer component to render below the PinScreen.                                       |
 | containerStyle  | object        | Yes       | See PinScreen.js     | Style applied to the container. Background colour can be set here.                      |
 | logoStyle       | object        | Yes       |                      | Style applied to your logo.                                                             |
 | taglineStyle    | object        | Yes       | See PinScreen.js     | Style applied to the tagline.                                                           |
