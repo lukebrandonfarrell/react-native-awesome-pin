@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
   // property to expand the pins to take up more space
   // on the screen. The default is 0.8.
   containerDefaultStyle: {
+    flex: null,
     flexDirection: "row",
     alignItems: "center",
     paddingTop: 25,

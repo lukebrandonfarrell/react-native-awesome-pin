@@ -66,16 +66,16 @@ class PinKeyboard extends Component {
         {this.renderError()}
         <View style={[keyboardDefaultStyle, keyboardStyle]}>
           {// Maps each array of numbers in the keyboardValues array
-          keyboard.map((row, r) => {
-            return (
-              <View key={r} style={keyboardRowStyle}>
-                {// Maps each number in row and creates key for that number
-                row.map((element, k) => {
-                  return this.renderKey(element, r, k);
-                })}
-              </View>
-            );
-          })}
+            keyboard.map((row, r) => {
+              return (
+                <View key={r} style={keyboardRowStyle}>
+                  {// Maps each number in row and creates key for that number
+                    row.map((element, k) => {
+                      return this.renderKey(element, r, k);
+                    })}
+                </View>
+              );
+            })}
         </View>
       </View>
     );
@@ -146,11 +146,11 @@ class PinKeyboard extends Component {
     const keyboardFuncSet = keyboardFunc
       ? keyboardFunc
       : [
-          [null, null, null],
-          [null, null, null],
-          [null, null, null],
-          [null, 0, () => this.props.keyDown("back")]
-        ];
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
+        [null, 0, () => this.props.keyDown("back")]
+      ];
 
     // Decide if the element passed as the key is text
     const keyJsx = keyboardFuncSet[row][column] ? (
@@ -258,7 +258,7 @@ PinKeyboard.defaultProps = {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    flex: 1,
+    flex: null,
     width: "100%",
     flexDirection: "column",
     justifyContent: "flex-end"

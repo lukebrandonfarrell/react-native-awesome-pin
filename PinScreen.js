@@ -82,6 +82,7 @@ class PinScreen extends Component {
       tagline,
       numberOfPins,
       shakeVibration,
+      logoEnabled,
       headerBackgroundColor,
       footerBackgroundColor,
       // Style Props
@@ -119,9 +120,9 @@ class PinScreen extends Component {
             { backgroundColor: headerBackgroundColor }
           ]}
         >
-          <Image style={logoStyle} source={logo} />
+          {logoEnabled ?
+            <Image style={[{ flex: 2 }, logoStyle]} source={logo} /> : null }
           <Text style={[defaultTaglineStyle, taglineStyle]}>{tagline}</Text>
-
           <PinInput
             onRef={ref => (this.pins = ref)}
             numberOfPins={numberOfPins}
@@ -239,6 +240,7 @@ PinScreen.propTypes = {
   numberOfPins: PropTypes.number,
   keyVibration: PropTypes.bool,
   shakeVibration: PropTypes.bool,
+  logoEnabled: PropTypes.bool,
   headerBackgroundColor: PropTypes.string,
   footerBackgroundColor: PropTypes.string,
   ItemFooter: PropTypes.element,
@@ -271,6 +273,7 @@ PinScreen.defaultProps = {
   // Is vibration enabled or disabled
   keyVibration: true,
   shakeVibration: true,
+  logoEnabled: false,
   headerBackgroundColor: "#e2e2e2",
   footerBackgroundColor: "#fff"
 };
@@ -284,21 +287,23 @@ const styles = StyleSheet.create({
   containerDefaultStyle: {
     flex: 1,
     width: "100%",
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#e2e2e2"
   },
   safeAreaViewHeaderDefaultStyle: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     width: "100%",
-    marginTop: 100
+    marginTop: 20,
   },
   safeAreaViewFooterDefaultStyle: {
-    height: 250,
-    width: "100%"
+    flex: null,
+    width: "100%",
   },
   defaultTaglineStyle: {
+    flex: null,
     color: "#FFF",
     fontSize: 17,
     fontWeight: "bold"

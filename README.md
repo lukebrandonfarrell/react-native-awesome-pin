@@ -176,6 +176,7 @@ in the future.
 | numberOfPins    | number        | Yes       | 5                    | Number of pins to render.                                                               |
 | numberOfPinsActive | number     | Yes       | 0                    | Number of active pins. You can pass the `pin.length` here.                              |
 | vibration       | bool          | Yes       | true                 | Should vibration be enabled.                                                            |
+| logoEnabled     | bool          | Yes       | false                | Render the logo on the screen.                                                          |
 | animationShakeCallback | func   | Yes       |                      | 4 x 3 matrix containing custom functions for each key. Pass null for no function.       |
 | containerStyle  | object        | Yes       | See PinInput.js      | Style applied to PINS container.                                                        |
 | pinStyle        | object        | Yes       | See PinInput.js      | Style applied to each circle PIN.                                                       |
