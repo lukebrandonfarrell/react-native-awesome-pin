@@ -4,6 +4,8 @@
 [![npm licence](http://img.shields.io/npm/l/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-awesome-pin)
 [![npm downloads](http://img.shields.io/npm/dt/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-awesome-pin)
 
+**This repository is no longer actively maintained. It has been extracted into two other packages to be more reusable: [react-native-pins](https://github.com/lukebrandonfarrell/react-native-pins) and [react-native-screen-keyboard](https://github.com/lukebrandonfarrell/react-native-screen-keyboard)**.
+
 A highly interactive and customizable PIN code screen for React Native.
 
 - Plug and play PIN screen with dozens of props (can be themed to suit your brand).
