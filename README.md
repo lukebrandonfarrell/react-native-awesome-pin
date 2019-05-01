@@ -168,16 +168,15 @@ in the future.
 | errorStyle      | object        | Yes       | See PinKeyboard.js   | Style applied to popup error. Can set the background colour here.                       |
 | errorTextStyle  | object        | Yes       | See PinKeyboard.js   | Style applied to the text inside the popup error.                                       |
 
-#### PinScreen
+#### PinInput
 
 | Prop            | Type          | Optional  | Default              | Description                                                                             |
 | --------------- | ------------- | --------- | -------------------- | --------------------------------------------------------------------------------------- |
-| onRef           | string        | No        |                      | onRef allows you to call the `throwError(message)` method.                              |
+| onRef           | any           | No        |                      | onRef allows you to call the `shake()` method.                              |
 | numberOfPins    | number        | Yes       | 5                    | Number of pins to render.                                                               |
 | numberOfPinsActive | number     | Yes       | 0                    | Number of active pins. You can pass the `pin.length` here.                              |
-| vibration       | bool          | Yes       | true                 | Should vibration be enabled.                                                            |
-| logoEnabled     | bool          | Yes       | false                | Render the logo on the screen.                                                          |
-| animationShakeCallback | func   | Yes       |                      | 4 x 3 matrix containing custom functions for each key. Pass null for no function.       |
+| vibration       | bool          | Yes       | true                 | Should vibration be enabled on shake?                                                   |
+| animationShakeCallback | func   | Yes       |                      | A callback triggered when the pin shake animation has finished.                         |
 | containerStyle  | object        | Yes       | See PinInput.js      | Style applied to PINS container.                                                        |
 | pinStyle        | object        | Yes       | See PinInput.js      | Style applied to each circle PIN.                                                       |
 | pinActiveStyle  | object        | Yes       | See PinInput.js      | Style applied to each circle PIN when it is active.                                     |
