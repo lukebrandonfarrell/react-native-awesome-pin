@@ -223,6 +223,13 @@ class PinScreen extends Component {
   }
 
   /**
+   * Function to clear the current pin
+   */
+  clearPin() {
+    this.setState({ pin: ""});
+  }
+
+  /**
    * Callback when shake animation has completed on the pin
    */
   shakeAnimationComplete() {
