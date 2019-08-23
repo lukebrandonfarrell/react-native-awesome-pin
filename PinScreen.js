@@ -190,9 +190,11 @@ class PinScreen extends Component {
       Vibration.vibrate(50);
     }
 
-    // The pin has been changed, trigger the callback
-    // Don't allow the callback if the input exceeds the number of pins
-    if (newPin.length <= numberOfPins) {
+    // Save the new pin into the state
+    this.setState({ pin: newPin });
+
+    // If the newPin matches the required length, perform the callback
+    if (newPin.length === numberOfPins) {
       if (keyDown) keyDown(newPin);
     }
   }
