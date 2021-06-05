@@ -192,11 +192,6 @@ in the future.
 
 If you want to issue a PR, go ahead ;)
 
-## Authors
-
-- [**Luke Brandon Farrell**](https://lukebrandonfarrell.com/) - _Author_
-- [**Redu**](https://redu.co.uk/) - _Organization_
-
 ## License
 
 This project is licensed under the MIT License
