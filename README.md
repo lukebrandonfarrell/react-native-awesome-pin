@@ -1,4 +1,7 @@
 # react-native-awesome-pin
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm](https://img.shields.io/npm/v/react-native-awesome-pin.svg?style=flat-square)](https://www.npmjs.com/package/react-native-awesome-pin)
 [![npm licence](http://img.shields.io/npm/l/react-native-awesome-pin.svg?style=flat-square)](https://npmjs.org/package/react-native-awesome-pin)
@@ -200,3 +203,23 @@ If you want to issue a PR, go ahead ;)
 ## License
 
 This project is licensed under the MIT License
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gerwim"><img src="https://avatars.githubusercontent.com/u/1841721?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gerwim</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-awesome-pin/issues?q=author%3Agerwim" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
