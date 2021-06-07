@@ -1,6 +1,6 @@
 # react-native-awesome-pin
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm](https://img.shields.io/npm/v/react-native-awesome-pin.svg?style=flat-square)](https://www.npmjs.com/package/react-native-awesome-pin)
@@ -209,6 +209,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/gerwim"><img src="https://avatars.githubusercontent.com/u/1841721?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gerwim</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-awesome-pin/issues?q=author%3Agerwim" title="Bug reports">🐛</a> <a href="#ideas-gerwim" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://discord.gg/QqTN6HqNTG"><img src="https://avatars.githubusercontent.com/u/18139277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luke Brandon Farrell</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-awesome-pin/commits?author=lukebrandonfarrell" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-awesome-pin/commits?author=lukebrandonfarrell" title="Documentation">📖</a> <a href="#ideas-lukebrandonfarrell" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/aspect-apps/react-native-awesome-pin/pulls?q=is%3Apr+reviewed-by%3Alukebrandonfarrell" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
