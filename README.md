@@ -213,7 +213,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/gerwim"><img src="https://avatars.githubusercontent.com/u/1841721?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gerwim</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-awesome-pin/issues?q=author%3Agerwim" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/gerwim"><img src="https://avatars.githubusercontent.com/u/1841721?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gerwim</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-awesome-pin/issues?q=author%3Agerwim" title="Bug reports">🐛</a> <a href="#ideas-gerwim" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
