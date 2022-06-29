@@ -177,10 +177,12 @@ class PinScreen extends Component {
     // a parameter.
     if (key === "back") {
       newPin = pin.substring(0, pin.length - 1);
+      this.setState({pin: newPin});
     } else {
       // Concat the letter in the string
       if (pin.length < numberOfPins) {
         newPin = pin.concat(key);
+        this.setState({pin: newPin});
       }
     }
 
