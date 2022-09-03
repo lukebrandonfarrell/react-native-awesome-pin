@@ -100,7 +100,8 @@ class PinScreen extends Component {
       keyTextStyle,
       keyImageStyle,
       errorStyle,
-      errorTextStyle
+      errorTextStyle,
+      keyboard
     } = this.props;
     /** State */
     const { pin } = this.state;
@@ -151,6 +152,7 @@ class PinScreen extends Component {
             keyImageStyle={keyImageStyle}
             errorStyle={errorStyle}
             errorTextStyle={errorTextStyle}
+            keyboard={keyboard}
           />
           {this.props.ItemFooter}
         </SafeAreaView>
@@ -246,6 +248,7 @@ PinScreen.propTypes = {
   headerBackgroundColor: PropTypes.string,
   footerBackgroundColor: PropTypes.string,
   ItemFooter: PropTypes.element,
+  keyboard: PropTypes.array,
 
   // Style props
   containerStyle: PropTypes.object,
