@@ -100,7 +100,9 @@ class PinScreen extends Component {
       keyTextStyle,
       keyImageStyle,
       errorStyle,
-      errorTextStyle
+      errorTextStyle,
+      keyboard,
+      disableRippleEffect
     } = this.props;
     /** State */
     const { pin } = this.state;
@@ -151,6 +153,8 @@ class PinScreen extends Component {
             keyImageStyle={keyImageStyle}
             errorStyle={errorStyle}
             errorTextStyle={errorTextStyle}
+            keyboard={keyboard}
+            disableRippleEffect={disableRippleEffect}
           />
           {this.props.ItemFooter}
         </SafeAreaView>
@@ -246,6 +250,8 @@ PinScreen.propTypes = {
   headerBackgroundColor: PropTypes.string,
   footerBackgroundColor: PropTypes.string,
   ItemFooter: PropTypes.element,
+  keyboard: PropTypes.array,
+  disableRippleEffect: PropTypes.bool,
 
   // Style props
   containerStyle: PropTypes.object,

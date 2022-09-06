@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from "react";
-import { View, Image, Text, StyleSheet, Platform } from "react-native";
+import { View, Image, Text, StyleSheet, Platform, TouchableOpacity } from "react-native";
 import Ripple from "react-native-material-ripple";
 import PropTypes from "prop-types";
 
@@ -131,6 +131,7 @@ class PinKeyboard extends Component {
     } = styles;
     /** Props */
     const {
+      disableRippleEffect,
       keyDown,
       keyboardFunc,
       keyboardDisabledStyle,
@@ -161,19 +162,22 @@ class PinKeyboard extends Component {
 
     // We want to block keyboard interactions if it has been disabled.
     if (!disabled) {
+      const KeyComponent = disableRippleEffect ? TouchableOpacity : Ripple;
+      const keyProps = {
+        [disableRippleEffect ? 'onPress' : 'onPressIn'] : () =>
+        keyboardFuncSet[row][column]
+          ? keyboardFuncSet[row][column]()
+          : keyDown(entity)
+      }
       return (
-        <Ripple
+        <KeyComponent
           rippleColor={"#000"}
           key={column}
-          onPressIn={() =>
-            keyboardFuncSet[row][column]
-              ? keyboardFuncSet[row][column]()
-              : keyDown(entity)
-          }
+          {...keyProps}
           style={[keyContainerStyle, keyDefaultStyle, keyStyle]}
         >
           {keyJsx}
-        </Ripple>
+        </KeyComponent>
       );
     } else {
       return (
@@ -242,7 +246,8 @@ PinKeyboard.propTypes = {
   keyTextStyle: PropTypes.object,
   keyImageStyle: PropTypes.object,
   errorStyle: PropTypes.object,
-  errorTextStyle: PropTypes.object
+  errorTextStyle: PropTypes.object,
+  disableRippleEffect: PropTypes.bool
 };
 
 PinKeyboard.defaultProps = {

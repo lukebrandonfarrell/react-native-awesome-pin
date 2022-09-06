@@ -148,11 +148,14 @@ The `<PinScreen />` is a great plug and play solution for a PIN screen.
 | containerStyle        | object  | Yes      | See PinScreen.js   | Style applied to the container. Background colour can be set here.                |
 | logoStyle             | object  | Yes      |                    | Style applied to your logo.                                                       |
 | taglineStyle          | object  | Yes      | See PinScreen.js   | Style applied to the tagline.                                                     |
+| pin                   | string  | Yes      |                    | The pin value.                                                                    |
 | pinContainerStyle     | object  | Yes      | See PinInput.js    | Style applied to PINS container.                                                  |
 | pinStyle              | object  | Yes      | See PinInput.js    | Style applied to each circle PIN.                                                 |
 | pinActiveStyle        | object  | Yes      | See PinInput.js    | Style applied to each circle PIN when it is active.                               |
+| keyboard              | array   | Yes      | See PinKeyboard.js | 4 x 3 matrix containing the value for each key. Image or text.                    |
 | keyboardStyle         | object  | Yes      | See PinKeyboard.js | Style applied to the keyboard.                                                    |
 | keyboardDisabledStyle | object  | Yes      | See PinKeyboard.js | Style applied when the keyboard is disabled.                                      |
+| disableRippleEffect   | bool    | Yes      | false              | Disables the ripple effect from the keys.                                         |
 | keyStyle              | object  | Yes      | See PinKeyboard.js | Style applied to each key on the keyboard.                                        |
 | keyTextStyle          | object  | Yes      | See PinKeyboard.js | Style applied to the text inside each key.                                        |
 | keyImageStyle         | object  | Yes      | See PinKeyboard.js | Style applied to image in a key. If an image is passed.                           |
@@ -172,6 +175,7 @@ in the future.
 | keyboardFunc          | array  | Yes      | See PinKeyboard.js | 4 x 3 matrix containing custom functions for each key. Pass null for no function. |
 | keyboardStyle         | object | Yes      | See PinKeyboard.js | Style applied to the keyboard.                                                    |
 | keyboardDisabledStyle | object | Yes      | See PinKeyboard.js | Style applied when the keyboard is disabled.                                      |
+| disableRippleEffect   | bool   | Yes      | false              | Disables the ripple effect from the keys.                                         |
 | keyStyle              | object | Yes      | See PinKeyboard.js | Style applied to each key on the keyboard.                                        |
 | keyTextStyle          | object | Yes      | See PinKeyboard.js | Style applied to the text inside each key.                                        |
 | keyImageStyle         | object | Yes      | See PinKeyboard.js | Style applied to image in a key. If an image is passed.                           |
