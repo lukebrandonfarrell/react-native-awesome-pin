@@ -23,6 +23,16 @@ To get started install via npm:
 ```sh
  npm install react-native-awesome-pin --save
 ```
+## Requirements
+
+#### Android
+
+With Android 7 and higher you need to add the "Vibration" permission to your AndroidManifest.xml of your project. This permission is needed for `keyVibration` and `shakeVibration` properties. 
+Add the following to your `android/app/src/main/AndroidManifest.xml`:
+
+```
+<uses-permission android:name="android.permission.VIBRATE"/>
+```
 
 ## Usage
 
